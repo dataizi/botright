@@ -32,9 +32,9 @@ from playwright.async_api import Position
 from playwright.async_api import Request as PlaywrightRequest
 from playwright.async_api import Route as PlaywrightRoute
 from playwright.async_api import Worker as PlaywrightWorker
-from recognizer.agents.playwright import AsyncChallenger
+# from recognizer.agents.playwright import AsyncChallenger
 
-from botright.modules import Faker, hcaptcha  # , geetest
+from botright.modules import Faker  #, hcaptcha, geetest
 
 # fmt: on
 
@@ -97,8 +97,8 @@ class Page(PlaywrightPage):
         else:
             self._keyboard = Keyboard(page.keyboard, self)
         self.cdp: Optional[PlaywrightCDPSession] = None
-        self.hcaptcha_solver = hcaptcha.hCaptcha(browser, self)
-        self.recaptcha_solver = AsyncChallenger(self)
+        # self.hcaptcha_solver = hcaptcha.hCaptcha(browser, self)
+        # self.recaptcha_solver = AsyncChallenger(self)
 
         # Aliases
         self._origin_close = page.close
@@ -256,8 +256,6 @@ class Page(PlaywrightPage):
         """
         result: Union[str, bool] = await self.recaptcha_solver.solve_recaptcha()
         return result
-
-    visual_recaptcha = solve_recaptcha
 
     async def close(self, run_before_unload: Optional[bool] = None, reason: Optional[str] = None):
         await self._origin_close(run_before_unload=run_before_unload, reason=reason)

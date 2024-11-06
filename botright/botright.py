@@ -7,7 +7,7 @@ from tempfile import TemporaryDirectory, gettempdir
 from typing import Any, Dict, List, Optional
 
 import browsers
-import hcaptcha_challenger as solver
+# import hcaptcha_challenger as solver
 import loguru
 from async_class import AsyncObject
 from chrome_fingerprints import AsyncFingerprintGenerator
@@ -77,8 +77,8 @@ class Botright(AsyncObject):
             use_undetected_playwright (bool, optional): Whether to use undetected_playwright . EXPERIMENTAL (TEMP). Defaults to False.
         """
 
-        # Init local-side of the ModelHub
-        solver.install(upgrade=True)
+        # # Init local-side of the ModelHub
+        # solver.install(upgrade=True)
         # Starting Playwright
         if use_undetected_playwright:
             # (TODO: TEMP)
